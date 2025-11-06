@@ -3,10 +3,10 @@ const { chromium } = require('playwright');
 
 const token = process.env.BOT_TOKEN;
 const chatId = process.env.CHAT_ID;
-const accounts = (process.env.ACCOUNTS || "").split(";")
+const accounts = (process.env.ACCOUNTS || "").split(",")
   .filter(x => x.trim())
   .map(item => {
-    const [user, pass] = item.split(",");
+    const [user, pass] = item.split(":");
     return { user: user?.trim(), pass: pass?.trim() };
   })
   .filter(acc => acc.user && acc.pass);
